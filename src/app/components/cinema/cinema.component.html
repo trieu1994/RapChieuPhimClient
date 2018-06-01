@@ -1,0 +1,151 @@
+<div *ngIf="cinema">
+	<!--main content-->
+	<section class="main-content">
+		<div class="container app-content-body shadow">
+			<div class="row hbox">
+				<div class="col-md-12 cinema-title">
+					<div class="col-md-6 ">
+						<img class="img-responsive" src="{{cinema.logo}}">
+						
+					</div>
+					<div class="col-md-5 cinema-add">
+						<h4><strong>{{cinema.name}}</strong></h4>
+						<div class="break-line"></div>
+						<p><strong>{{'CINEMA_PHONE'|translate}}</strong> {{cinema.phone}}</p>
+						<p><strong>{{'CINEMA_ADDRESS'|translate}}</strong>{{cinema.add}}</p>
+						<div class="break-line"></div>
+						<a href="#" class="btn btn-sm btn-rounded btn-default" data-toggle="modal" data-target="#ticketModal">
+									<i class="fa " aria-hidden="true"></i> {{'CINEMA_PRICE'|translate}}
+								</a>
+					</div>
+					<div class="modal fade" id="ticketModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<div class="modal-dialog modal-lg" role="dialog" style="display: block;">
+										<div class="modal-content">
+											<div class="modal-body">
+												
+													<img class="img-responsive" src="{{cinema.giave}}">
+												
+											</div>
+										</div>
+									</div>
+									
+					</div>
+				</div>
+				<div class="col-md-2 col-xs-3 status-group" >
+					<div class="status-movies" ng-if="cinema.name === 'CGV Vĩnh Trung Plaza'" 
+						[class.notdisplay] = "cinema.name !== 'CGV Vĩnh Trung Plaza'">
+						<div><a (click)="onClickFilter('CGV-Vinh-Trung','phimdangchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim đang chiếu</a></div>
+						<div><a (click)="onClickFilter('CGV-Vinh-Trung','phimsapchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim sắp chiếu</a></div>
+					
+					</div>
+					<div class="status-movies" ng-if="cinema.name === 'CGV VinCom Đà Nẵng'"
+						[class.notdisplay] = "cinema.name !== 'CGV VinCom Đà Nẵng'">
+						<div><a (click)="onClickFilter('CGV-Vincom','phimdangchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim đang chiếu</a></div>
+						<div><a (click)="onClickFilter('CGV-Vincom','phimsapchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim sắp chiếu</a></div>
+						
+					</div>
+					<div class="status-movies" ng-if="cinema.name === 'Lotte Đà Nẵng'"
+						[class.notdisplay] = "cinema.name !== 'Lotte Đà Nẵng'">
+						<div><a (click)="onClickFilter('Lotte','phimdangchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim đang chiếu</a></div>
+						<div><a (click)="onClickFilter('Lotte','phimsapchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim sắp chiếu</a></div>
+						
+					</div>
+					<div class="status-movies" ng-if="cinema.name === 'Galaxy Đà Nẵng'"
+						[class.notdisplay] = "cinema.name !== 'Galaxy Đà Nẵng'">
+						<div><a (click)="onClickFilter('Galaxy','phimdangchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']" >Phim đang chiếu</a></div>
+						<div><a (click)="onClickFilter('Galaxy','phimsapchieu')" ng-click='selected($event)' [routerLinkActive]="['bg-danger']">Phim sắp chiếu</a></div>
+						
+					</div>
+				</div>
+				<div class="col-md-7 col-xs-12 film-group">
+					<!--<router-outlet></router-outlet>	-->
+					<!--show movies follow status-->
+					<div *ngFor="let movie of movies| paginate: {itemsPerPage: 4, currentPage:page}" class="image-group col-md-12">
+						<div class="row">
+              <div class="infor-film col-md-5 ">
+                <img class="img-responsive" src="http://apicine.herokuapp.com/public//{{movie.image}}">
+                <p class="point">5.0</p>
+              </div>
+              <div class="infor-film col-md-7">
+                <div class="bg-title">
+                  <a [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">
+                    <h1>{{movie.titleEng}}</h1>
+                  </a>
+                  <div class="star-group">
+                    <img src="assets/images/star-on.png">
+                    <img src="assets/images/star-on.png">
+                    <img src="assets/images/star-on.png">
+                    <img src="assets/images/star-on.png">
+                    <img src="assets/images/star-off.png">
+                  </div>
+                </div>
+                <div class="infor-film">
+                  <p><strong>{{'CINEMA_CATEGORY'|translate}}</strong> {{movie.cate}}</p>
+                  <p><strong>{{'CINEMA_DATESHOW'|translate}}</strong> {{movie.pubDay|date:'dd/MMMM/yyyy'}}</p>
+                  <p><strong>{{'CINEMA_DIRECTOR'|translate}}</strong> {{movie.director}}</p>
+                  <p><strong>{{'CINEMA_ACTOR'|translate}}</strong> {{movie.actor}}</p>
+                  <p><strong>{{'CINEMA_LANGUAGE'|translate}}</strong>   {{movie.language}}</p>
+                  <p><strong>{{'CINEMA_DURATION'|translate}}</strong> {{movie.duration}} {{'CINEMA_MINUTES'|translate}}</p>
+                </div>
+              </div>
+            </div>
+					
+					
+					</div>
+
+					<!--paging-->
+					<pagination-controls style="font-size:14px;" (pageChange)="page = $event" #api> </pagination-controls>
+				
+				</div>
+				<div class="col-md-3 ads-group">
+					<img src="assets/images/qc-1.jpg">
+				</div>
+			</div>
+		</div>
+	</section>
+<!--lng: 16.0666,lat:108.211
+lng: 16.0711,lat:108.228,phone:'
+16.0351775,lat:108.2268066,
+lng: 16.0536,lat:108.199-->
+<!--infor this movie theater-->
+
+<div *ngIf="cinema.id===1">
+<agm-map [latitude]="16.0666" [longitude]= "108.211">
+                           <agm-marker [latitude]="16.0666" [longitude]="108.211"></agm-marker>
+                           </agm-map>
+
+</div>
+<div *ngIf="cinema.id===2">
+<agm-map [latitude]="16.0711" [longitude]= "108.228">
+                           <agm-marker [latitude]="16.0711" [longitude]="108.228"></agm-marker>
+                           </agm-map>
+
+</div>
+<div *ngIf="cinema.id===3">
+<agm-map [latitude]="16.0351775" [longitude]= "108.2268066">
+                           <agm-marker [latitude]="16.0351775" [longitude]="108.2268066"></agm-marker>
+                           </agm-map>
+
+</div>
+<div *ngIf="cinema.id===4">
+<agm-map [latitude]="16.0536" [longitude]= "108.199">
+                           <agm-marker [latitude]="16.0536" [longitude]="108.199"></agm-marker>
+</agm-map>
+
+</div>
+<div class="container">
+	<div class="address-cinema">
+		
+		<div class="text-address">
+			<i class="fa fa-location-arrow" aria-hidden="true"></i>
+			<p>{{cinema.add}}</p>
+			<i class="fa fa-phone" aria-hidden="true"></i>
+			<p>Tel: {{cinema.phone}} </p>
+		</div>
+	</div>
+</div>
+
+<!--end infor movie theater-->
+
+
+</div>

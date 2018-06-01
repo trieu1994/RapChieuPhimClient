@@ -1,0 +1,166 @@
+.shadow {
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); }
+
+.main-content {
+  background-color: #f0f3f4; }
+  .main-content .app-content-body .hbox {
+    width: 100%;
+    height: 100%;
+    border-spacing: 0; }
+    .main-content .app-content-body .hbox .cinema-title {
+      border-bottom: 2px solid #e00505;
+      border-top: 1px solid #da270a;
+      padding: 1em;
+      background-color: #2b3a40; }
+      .main-content .app-content-body .hbox .cinema-title img {
+        width: 100%; }
+      .main-content .app-content-body .hbox .cinema-title .cinema-add {
+        padding: 1em;
+        color: white; }
+        .main-content .app-content-body .hbox .cinema-title .cinema-add .break-line {
+          width: 80%;
+          height: 2px;
+          background-color: brown;
+          margin-bottom: 1em; }
+    .main-content .app-content-body .hbox .status-group {
+      margin-top: 1em; }
+      .main-content .app-content-body .hbox .status-group .status-movies div {
+        border-radius: 3px;
+        margin: 2em 1em;
+        background-color: white;
+        text-align: center;
+        padding: 2em 1.5em;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+        .main-content .app-content-body .hbox .status-group .status-movies div a {
+          color: #5f5f5f;
+          font-size: 1.2em;
+          font-weight: bold; }
+        .main-content .app-content-body .hbox .status-group .status-movies div:first-of-type {
+          margin: 0em 1em; }
+        .main-content .app-content-body .hbox .status-group .status-movies div:hover, .main-content .app-content-body .hbox .status-group .status-movies div:active, .main-content .app-content-body .hbox .status-group .status-movies div:focus {
+          background-color: #2b3a40; }
+          .main-content .app-content-body .hbox .status-group .status-movies div:hover a, .main-content .app-content-body .hbox .status-group .status-movies div:active a, .main-content .app-content-body .hbox .status-group .status-movies div:focus a {
+            color: white; }
+    .main-content .app-content-body .hbox .film-group {
+      text-align: center; }
+      .main-content .app-content-body .hbox .film-group .image-group {
+        border: 1px solid #dee5e7;
+        margin: 1em 0;
+        background-color: white;
+        padding: 0.5em 0; }
+        .main-content .app-content-body .hbox .film-group .image-group .infor-film {
+          text-align: left;
+          position: relative; }
+          .main-content .app-content-body .hbox .film-group .image-group .infor-film .point {
+            top: 21.4em;
+            right: 0.7em;
+            position: absolute;
+            float: right;
+            padding: 1em;
+            background-color: #ff5938;
+            border-radius: 50px;
+            border: 3px solid white;
+            color: white;
+            font-weight: bold; }
+          .main-content .app-content-body .hbox .film-group .image-group .infor-film .bg-title {
+            background-color: #2b3a40;
+            padding: 0.5em 1em; }
+            .main-content .app-content-body .hbox .film-group .image-group .infor-film .bg-title a h1 {
+              font-size: 1.5em;
+              font-weight: bold;
+              color: white; }
+            .main-content .app-content-body .hbox .film-group .image-group .infor-film .bg-title a:hover {
+              text-decoration: none;
+              color: cadetblue; }
+            .main-content .app-content-body .hbox .film-group .image-group .infor-film .bg-title p {
+              font-style: italic;
+              font-size: 0.8em; }
+            .main-content .app-content-body .hbox .film-group .image-group .infor-film .bg-title .star-group {
+              padding-bottom: 1em; }
+          .main-content .app-content-body .hbox .film-group .image-group .infor-film .infor-film {
+            margin: 2em 1em; }
+      .main-content .app-content-body .hbox .film-group ul {
+        text-align: center; }
+        .main-content .app-content-body .hbox .film-group ul .pagination {
+          display: inline-block;
+          padding: 0;
+          margin: 0; }
+          .main-content .app-content-body .hbox .film-group ul .pagination li {
+            display: inline; }
+            .main-content .app-content-body .hbox .film-group ul .pagination li a {
+              color: black;
+              float: left;
+              padding: 8px 16px;
+              text-decoration: none; }
+    .main-content .app-content-body .hbox .ads-group img {
+      padding-top: 1em;
+      width: 100%; }
+  .main-content .row {
+    margin: 0; }
+
+.selected {
+  background-color: #2b3a40 !important;
+  color: white; }
+
+#map_movie {
+  width: 100%;
+  height: 400px; }
+
+.address-cinema {
+  margin: 3em 0 0 0;
+  padding: 1em 0 1em 3em;
+  width: 100%;
+  background-color: darksalmon; }
+  .address-cinema .text-address {
+    padding: 1em;
+    color: white; }
+    .address-cinema .text-address .fa {
+      float: left;
+      padding-right: 1em; }
+  .address-cinema .break-line {
+    background-color: wheat;
+    height: 2px;
+    width: 80%; }
+
+/*-------Footer--------*/
+footer {
+  margin-top: 20px;
+  background-color: #1a1a1a;
+  color: #b4b1b2; }
+  footer .col-md-4 {
+    margin: 50px 0 20px 0; }
+  footer .information img {
+    margin-bottom: 10px; }
+  footer .subcribe h2 {
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 600; }
+  footer .email-subcribe {
+    background-color: #454545;
+    border-color: #666666 !important;
+    border: 1px solid;
+    color: #cccccc;
+    margin-bottom: 10px !important;
+    max-width: 300px;
+    margin: auto; }
+  footer #copyright {
+    background-color: #000000;
+    padding: 17px 0;
+    color: #e9e9e9; }
+  footer .fanpage {
+    margin-top: 20px; }
+
+@media (max-width: 991px) {
+  .information {
+    text-align: center; } }
+/*-------End Footer--------*/
+.sebm-google-map-container {
+  height: 300px;
+}
+
+.notdisplay{
+  display: none;
+}
+/*# sourceMappingURL=filterCinema.css.map */
+

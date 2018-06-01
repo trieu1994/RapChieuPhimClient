@@ -1,0 +1,295 @@
+<div class="container">
+        <div class="app-content-body">
+            <div class="hbox hbox-auto-xs hbox-auto-sm">
+                <div class="bg-light lter b-b wrapper-md" style="position: relative">
+                    <div class="pull-right visible-lg" style="position: absolute; top: 1px; right: 1px;">
+                        <div class="m-b-sm text-center">
+    
+    
+                        </div>
+                    </div>
+                    <h1 class="m-n font-thin h2">{{'SCHEDULE_SCHEDULE'|translate}}</h1>
+                    <p class="text-muted m-b-none">{{'SCHEDULE_FIND'|translate}}</p>
+                </div>
+                <div class="wrapper-md">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form method="post" action="/showtime" id="showtime-search-form">
+                                <div class="form-group">
+                                    <label>{{'SCHEDULE_CHOOSEMOVIE'|translate}}</label>
+                                     <select name="movie_id"  [(ngModel)]="selected" class="form-control btn-cinema-select" (change)="onSelect2($event)">
+                                 
+                                <option *ngFor='let movie of movies'  value="{{movie.titleEng}}" selected="selected">{{movie.titleEng}}</option>
+                                                                                           
+                                                                                
+                             </select>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label>{{'SCHEDULE_CINEMA'|translate}}</label>
+                                    <select  name="cinema_id" [(ngModel)]="selected" class="form-control btn-cinema-select" (change)="onSelect($event)">
+                                 <!--<option value="13786" data-subtext="" selected="selected">Chọn rạp</option>-->
+                                <option  *ngFor='let ci of cinema' value="{{ci.name}}" selected="selected">{{ci.name}}</option>
+                                                                                           
+                                
+                                                                                
+                             </select>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label>Thời gian</label>
+                                    <select name="range" class="form-control">
+                                
+                            </select>
+                                </div> -->
+                                <!--<div class="form-group">
+                                <button class="btn btn-danger btn-block">Tìm lịch chiếu</button>
+                            </div>-->
+                            </form>
+                            <div class="text-center visible-lg visible-md">
+                                <div class="m-b-sm m-t-sm text-center">
+    
+    
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-8">
+                                <div id="showtime" *ngFor='let schedule of schedules'>
+                                    <div class="showtimes" style="display:block">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="pull-right">
+                                                    <a href="#" class="btn btn-sm btn-danger btn-rounded btn-icon btn-cinema-favourite" data-cinema-id="7" data-token="" rel="tooltip"
+                                                        title="Bỏ thích">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+    
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm btn-rounded btn-icon btn-default" data-toggle="modal" data-target="#trailerModal" data-name="CGV CT Plaza"
+                                                        data-address="Tầng 10, CT Plaza, 60A Trường Sơn, P.2, Q. Tân Bình, Tp. Hồ Chí Minh"
+                                                        data-latitude="10.812850000000" data-longitude="106.665199000000" rel="tooltip"
+                                                        title="Bản đồ">
+    
+                                                        <i aria-hidden="true" class="fa fa-map-marker"></i>
+    
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm btn-rounded btn-default" data-toggle="modal" data-target="#ticketModal">
+                                                        <i class="fa " aria-hidden="true"></i> Giá vé
+                                                    </a>
+                                                </div>
+                                                <h3 class="font-thin h3">
+                                                    <a href="#">
+                                   {{schedule.cinema}}
+                                </a>
+                                                </h3>
+                                                <small class="text-muted">
+                                {{schedule.address}}
+                                                        </small>
+                                            </div>
+                                            <a href="#">
+                                                <img style="margin: 4px 25px 4px 4px; border-radius: 2px;" src="http://apicine.herokuapp.com/public/{{schedule.image}}"
+                                                    class="r r-2x m-r pull-left" width="70">
+                                            </a>
+                                            <div class="panel-body" style="padding-left: 10px;">
+    
+    
+                                                <div class="m-b-sm">
+                                                    <h4 class="h4 font-bold" style="padding-top: -6px;">{{schedule.titleEng}}</h4>
+                                                    <div class="showtime-version">
+                                                        
+                                                        <h5 rel="tooltip"><span class="version-2d">{{schedule.dateShow|date:"dd/MM/yyyy"}}</span></h5>
+                                                        
+                                                      <!--<div *ngFor= 'let items of allTime'>
+                                                        <a *ngFor= 'let item of items' (click)="onSelect1(schedule,item)"
+                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
+                                                                data-target="#book1"> {{item}}
+                                                              
+    
+                                                                </a>
+                                                            </div>    -->
+                                                            <a (click)="onSelect1(schedule,schedule.listTime.split(',')[0])" 
+                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
+                                                                data-target="#book1">{{schedule.listTime.split(',')[0]}}
+                                                              
+    
+                                                                </a>
+                                                                
+                                                               
+                                                               <a (click)="onSelect1(schedule,schedule.listTime.split(',')[1])" 
+                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
+                                                                data-target="#book1">{{schedule.listTime.split(',')[1]}}
+                                                                 
+    
+                                                                </a>
+                                                              
+                                                             
+                                                                <a (click)="onSelect1(schedule,schedule.listTime.split(',')[2])" 
+                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
+                                                                data-target="#book1">{{schedule.listTime.split(',')[2]}}
+                                                                 
+    
+                                                                </a>
+                                                             
+                                                                <a (click)="onSelect1(schedule)" 
+                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
+                                                                data-target="#book1">{{schedule.listTime.split(',')[3]}}
+                                                                 
+    
+                                                                </a>
+    
+    
+                                                      
+                                                        <div class="modal fade"   id="book1" tabindex="-1" role="dialog" aria-labelledby="loginLabel">
+                                                            <div class="modal-dialog"  role="document">
+                                                                <div class="modal-content login" style="margin: -20px">
+                                                                    <div class="modal-header login__header flex-box">
+                                                                        <h2 class="login__title">{{'SCHEDULE_BOOKING'|translate}}</h2>
+                                                                        <button type="button" class="close login__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body login__body">
+    
+                                                                        <form [noValidate]= false class="form-horizontal" #f="ngForm" style="margin-right: 30px" (submit)="Booking()">
+                                                                            <div class="form-group">
+                                                                                    <div class="row">
+                                                                                            <label for="inputFullname"  class="col-sm-4 control-label">{{'SCHEDULE_FULLNAME'|translate}}</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" required [(ngModel)]="fullname" class="form-control" id="inputFullname" value="" placeholder="" name="name">
+                                                                                            </div>
+                                                                                    </div>                                                      
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                        <label for="Email"  class="col-sm-4 control-label">{{'SCHEDULE_EMAIL'|translate}}</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="email" required [(ngModel)]="email" class="form-control" id="inputEmail" value="" placeholder="" name="name">
+                                                                                        </div>
+                                                                                </div>                                                      
+                                                                            </div>
+                                                                           
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                        <label for="Address"   class="col-sm-4 control-label">{{'SCHEDULE_ADDRESS'|translate}}</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" required [(ngModel)]="address"  class="form-control" id="inputAddress" value="" placeholder="" name="diachi">
+                                                                                        </div>
+                                                                                </div>                            
+                                                                            </div>
+
+
+                                                                            <div class="form-group">
+                                                                                    <div class="row">
+                                                                                            <label for="Phone"  class="col-sm-4 control-label">{{'SCHEDULE_PHONE'|translate}}</label>
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" required [(ngModel)]="phone" class="form-control" id="inputPhone" value="" placeholder="" name="phone">
+                                                                                            </div>
+                                                                                    </div>                                    
+                                                                            </div>
+                                                                            
+                                                                             <div class="form-group">
+                                                                                 <div class="row">
+                                                                                        <label for="Dateshow" class="col-sm-4 control-label">{{'SCHEDULE_SHOW'|translate}}</label>
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" required [(ngModel)]="dateTime" class="form-control" id="inputDateshow" disabled 
+                                                                                                name="date">
+                                                                                        </div>
+                                                                                 </div>
+                                                                               
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                            
+                                                                                <label for="MovieName" class="col-sm-4 control-label">{{'SCHEDULE_MOVIENAME'|translate}}</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" required [(ngModel)]="movie_name"  class="form-control" id="inputMovieName" disabled  placeholder="Tên phim" name="movie">
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            <div class="form-group">
+                                                                                    <div class="row">
+                                                                                <label for="Cinema" class="col-sm-4 control-label">{{'SCHEDULE_CINEMA'|translate}}</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" required  [(ngModel)]="cinema_name"  class="form-control" id="inputCinema" disabled  placeholder="Rạp" name="rap">
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                <label for="Price" class="col-sm-4 control-label">{{'SCHEDULE_PRICE'|translate}}</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" required class="form-control" id="inputPrice" [(ngModel)]="price" disabled name="giave">
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                <label for="Soluong" class="col-sm-4 control-label">{{'SCHEDULE_AMOUNT'|translate}}</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" (keyup)="onKey($event)" required [(ngModel)]="num" class="form-control" id="inputSoluong" value="" placeholder="Số lượng"
+                                                                                        name="soluong">
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                <label for="Total" class="col-sm-4 control-label">{{'SCHEDULE_TOTAL'|translate}}</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input type="text" [(ngModel)]="total" class="form-control" id="inputTotal" disabled value="" placeholder="Tính tiền" name="tien">
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+    
+    
+    
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-offset-2 col-sm-10">
+                                                                                    <button type="submit" id="sign-in" class="btn btn-default">Thanh Toán</button>
+                                                                                    <button  type="button"  (click)="closeSignUp()" id="sign-in_submit" class="btn btn-default">Cancel</button>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                        </form>
+    
+                                                                    </div>
+    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+    
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="trailerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="js-video youtube widescreen">
+                                                            <div>
+                                                                
+                                                                <agm-map [latitude]="16.0666" [longitude]="108.211">
+                                                                    <agm-marker [latitude]="16.0666" [longitude]="108.211"></agm-marker>
+                                                                </agm-map>
+    
+                                                            </div>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>   
+                                    </div>   
+                                </div>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

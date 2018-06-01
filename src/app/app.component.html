@@ -1,0 +1,137 @@
+<div class="cinemacontainer clearfix" style="background-color: #f0f3f4;">
+  	<div class="cimobileheader clearfix">
+        <a class="smallogo"><img [src]="netImage" width="87" alt="" /></a>
+        <a id="cinavtoggle" class="animated-arrow"><span></span></a>
+        <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a>
+    </div>
+
+    <div class="header">
+      <!--Main Menu HTML Code-->
+		<div class="cimain ">
+      <div class="smllogo">
+        <a><img src="../assets/images/sLogo.png" alt="" /></a>      
+      </div>
+      <nav class="cimenu clearfix">
+          <ul class="mobile-sub cimenu-list">
+              <li><a href="#" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">{{'MENUITEM_HOME'|translate}}</span></a></li>
+              <li><a href="#"><i class="fa fa-film"></i>{{'MENUITEM_CATEGORY'|translate}} <span class="arrow"></span></a>
+                <ul class="cimenu-submenu">
+                  <li *ngFor="let cate of cates"><a [routerLink]="['/cates',cate.name]" routerLinkActive="active"><i class="fa fa-angle-right"></i>{{cate.name}}</a></li>                    
+                </ul>
+              </li>
+              <li><a href="#"><i class="fa fa-th-large"></i>{{'MENUITEM_CINEMA'|translate}}<span class="arrow"></span></a> 
+                <div class="megamenu clearfix">
+                    <ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+                      <li class="title">CGV Cinema</li>
+                      <li><a [routerLink]="['/cinemas', 'CGV-Vinh-Trung','phimdangchieu']"><i class="fa fa-arrow-circle-right"></i>CGV Vĩnh Trung Plaza </a></li>
+                      <li><a [routerLink]="['/cinemas', 'CGV-Vincom','phimdangchieu']"><i class="fa fa-arrow-circle-right"></i>CGV Vincom Đà Nẵng</a></li>
+                    </ul>
+                    <ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+                      <li class="title">Lotte Cinema</li>
+                      <li><a [routerLink]="['/cinemas', 'Lotte','phimdangchieu']"><i class="fa fa-arrow-circle-right"></i>Lotte Đà Nẵng</a></li>
+                    </ul>
+                    <ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+                      <li class="title">Galaxy Cinema</li>
+                      <li><a [routerLink]="['/cinemas', 'Galaxy','phimdangchieu']"><i class="fa fa-arrow-circle-right"></i>Galaxy Đà Nẵng</a></li>
+                    </ul>
+                  </div>
+              </li>
+              <li><a [routerLink]="['/news']"><i class="fa fa-newspaper-o"></i>{{'MENUITEM_PROMOTION'|translate}} </a> </li>
+              <li><a [routerLink]="['/schedule']" routerLinkActive="active"><i class="fa fa-clock-o" ></i>{{'MENUITEM_SCHEDULE'|translate}} </a> </li>
+              <li><a href="#"  data-toggle="modal" data-target="#signup" *ngIf="!token"> <i class="fa fa-pencil" ></i>{{'MENUITEM_SIGNIN'|translate}} </a> </li>
+              <li><a href="#" data-toggle="modal" data-target="#login" *ngIf="!token"><i class="fa fa-sign-in"  ></i>{{'MENUITEM_LOGIN'|translate}} </a> </li>
+              <li><a href="#" (click)="logOut()" *ngIf="token" ><i class="fa fa-sign-out" ></i>{{'MENUITEM_LOGOUT'|translate}} </a> </li>
+              <li><a href="#"><i class="fa fa-language"></i>{{'MENUITEM_LANGUAGE'|translate}} <span class="arrow"></span></a>
+                <ul class="cimenu-submenu">
+                    <li ><a (click)="languageEN()"><i class="fa fa-angle-right"></i>{{'MENUITEM_ENG'|translate}}</a></li>    
+                    <li ><a (click)="languageVI()"><i class="fa fa-angle-right"></i>{{'MENUITEM_VIET'|translate}}</a></li>                 
+                </ul>
+              </li>
+              <!-- <select id="selectlanguage" (change)='languageChange($event.target.value)'>
+                  <option>VietNam</option>
+                  <option>English</option>
+              </select> -->
+              
+              
+              <li class="rightmenu"><a href="#" [routerLink]="['/user',id]" data-toggle="modal"><i class="fa fa-user"></i>{{fullname}} </a> </li>
+            </ul>
+      </nav>
+    </div>
+                <!--modal login-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content login" style="margin: -20px">
+            <div class="modal-header login__header flex-box">
+                <h2 class="login-title">{{'MODAL_TITLE'|translate}}</h2>
+                <button type="button" class="close login__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body login__body">
+                <form [noValidate]= false class="form-signin" (submit)="signIn()" >
+                    <input type="email" class="form-control" placeholder="{{'MODAL_EMAIL'|translate}}"  [(ngModel)] = "inputEmail" required autofocus name="email">
+                    <input type="password" class="form-control" placeholder="{{'MODAL_PASSWORD'|translate}}" [(ngModel)] = "inputPassword" name="password" required>
+                    <button class="btn btn-lg btn-primary btn-block btn-success" type="submit" id="sign-in" (click)="signIn()"> 
+                        {{'MODAL_OK'|translate}}</button>
+                   
+                    <a href="#" class="pull-right need-help"  data-toggle="modal" data-target="#signup">{{'MODAL_NEEDHELP'|translate}} </a><span class="clearfix"></span>
+                    </form>
+            </div>
+        </div>
+    </div>     
+</div>                
+
+<div class="modal fade"  id="signup" tabindex="-1" role="dialog" aria-labelledby="signUpLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content login">
+            <div class="modal-header login__header flex-box">
+                <h2 class="login__title">{{'MODAL_SIGNUP'|translate}}</h2>
+                <button type="button" class="close login__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div  class="modal-body login__body">
+                <form [noValidate]= false name="formSignUp" class="form-signin" (submit)="signUp()" >
+                    <div class="form-group">
+                          <input type="email" class="form-control" id="inputYourEmail" required placeholder="{{'MODAL_EMAIL'|translate}}" [(ngModel)]="email" name="email">
+                    </div>
+                    <div class="form-group">
+                          <input type="text" class="form-control" id="inputYourName" required placeholder="{{'MODAL_FULLNAME'|translate}}" [(ngModel)] = "name" name="name">
+                    </div>
+                    <div class="form-group">
+                          <input type="text" class="form-control" id="inputYourAddress"   placeholder="{{'MODAL_ADDRESS'|translate}}" [(ngModel)] = "address"  name="address">
+                    </div>
+                    <div class="form-group">
+                          <input type="tel" class="form-control" id="inputPhone" required placeholder="{{'MODAL_PHONE'|translate}}" [(ngModel)] = "phone" name="phone">
+                      </div>
+                      <div class="form-group">
+                          <input type="password" class="form-control" id="inputYourPassword" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) formSignUp.inputConfirmPassword.pattern = this.value;" pattern="^\S{6,}$" placeholder="{{'MODAL_PASSWORD'|translate}}"  [(ngModel)] = "password" name="yourPassword" #yourPassword="ngModel" required/>                     
+                    </div>
+                    <div class="form-group">
+                            <input type="password" class="form-control" id="inputConfirmPassword" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" pattern="^\S{6,}$" placeholder="{{'MODAL_CONFIRMPASSWORD'|translate}}"  name="confirmPassword" required/>                     
+                      </div>
+                      <div class="form-group">
+                          <div clas="col-sm-offset-2 col-sm-10">
+                            <button type="submit"  id="sign-up" class="btn btn-lg btn-primary btn-block btn-warning">{{'MODAL_SIGNUP'|translate}}</button>
+                        </div>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+   
+<!--Main Content-->
+<div class="main-content">
+    <div class="container app-content-body shadow">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<!--Main Content-->
+
+   <!--Footer-->
+	<footer id="footer" class="container shadow" style="padding: 0px;">
+      <div class="copyright">
+        2018 © Copyright by <strong>Cinema</strong>. All rights reserved.
+      </div>
+    </footer> <!--Footer-->
+</div>

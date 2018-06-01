@@ -1,0 +1,61 @@
+<div id ="news" class="container body">
+  <h2 class="header-container"></h2>
+  <div class="row">
+    <div class="col-lg-9 col-sm-4 col-xs-6">
+              <div class="padder-md">
+
+                  
+                
+                      <div  *ngIf = "anew">
+                          <h1 class="font-bold h1 m-t-none m-b-sm text-center post-title">{{anew.title}}</h1>
+
+                          <div class="meta m-b text-center">
+                           
+                              ·
+                             <img src="http://localhost:8000/{{anew.image}}" class="img-fullsize" alt=""> 
+                              ·
+                              
+                          </div>
+
+                          
+                          
+                          
+                         
+                          <div class="post-content">
+                             
+
+                                {{anew.description}}
+
+                              
+                                                                  
+                                                          </div>
+
+                                  <div class="post-tags" *ngIf= "anew.id===1">
+                                 
+                                  <div class="fb-comments fb_iframe_widget " data-href = "http://localhost:3000/news/1" data-numposts="3"></div>
+                                       <iframe id="f2dc66247bc65e8" name="f2fb802f492489c" scrolling="no" style="border: medium none; overflow: hidden; height: 350px; width: 700px;" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=1642028219373274&amp;channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F87XNE1PC38r.js%3Fversion%3D42%23cb%3Df17bc8415842bfa%26domain%3Dvietjack.com%26origin%3Dhttp%253A%252F%252Fvietjack.com%252Ff3ec7698ab81a52%26relation%3Dparent.parent&amp;href=http%3A%2F%2Fvietjack.com%2Fhtml5%2Faudio_va_video_trong_html5.jsp&amp;locale=en_US&amp;numposts=4&amp;order_by=reverse_time&amp;sdk=joey&amp;version=v2.4&amp;width=550"></iframe>
+
+                                  </div>
+              <div class="post-tags" *ngIf= "anew.id===2">
+                                  
+                                  <div class="fb-comments"data-href = "http://localhost:3000/news/2" data-numposts="3"></div>
+                                       
+
+<iframe id="f3ed5b0d66db4" name="f143e85eb12bb8c" scrolling="no" style="border: medium none; overflow: hidden; height: 350px; width: 700px;" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=500141453482575&amp;channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F87XNE1PC38r.js%3Fversion%3D42%23cb%3Df37bcb199063dec%26domain%3Dtedu.com.vn%26origin%3Dhttps%253A%252F%252Ftedu.com.vn%252Ff128294651c844%26relation%3Dparent.parent&amp;href=https%3A%2F%2Ftedu.com.vn%2Flap-trinh-angular-2-can-ban%2Fangular-2-can-ban-bai-2-kien-truc-angular-2-57.html&amp;locale=en_US&amp;numposts=4&amp;sdk=joey&amp;version=v2.6&amp;width=770"></iframe></div>
+    </div>
+      <div class="row hbox">
+    <div class="col-md-2 ads-group">
+        <!--<a href='#qc-1'><img src="assets/images/qc-1.jpg" alt="" /></a>
+        <a href='#qc-2'><img src="assets/images/qc-2.jpg" alt="" /></a>-->
+      </div>
+      </div>
+      <!--<aside>
+        <a href='#qc-1'><img src="assets/images/qc-1.jpg" alt="" /></a>
+        <a href='#qc-2'><img src="assets/images/qc-2.jpg" alt="" /></a>
+        <a href='#qc-3'><img src="assets/images/qc-1.jpg" alt="" /></a>
+      </aside>
+    </div>-->
+  
+
+  </div>
+  

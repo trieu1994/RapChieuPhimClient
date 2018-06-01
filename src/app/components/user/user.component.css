@@ -1,0 +1,93 @@
+body { position: relative; }
+
+.btn-user { background: #2b3a40; border: 1px solid #2b3a40; padding: 10px 20px; color: #ffffff; border-radius: 4px; }
+.btn-user:hover { background: transparent; border: 1px solid #ccc; color: #2b3a40; transition: all .4s ease-in-out;}
+
+.user-profile {
+	padding: 10px !important;
+}
+
+.user-profile .user-left, .user-profile .user-right {
+	padding: 10px;
+}
+
+.user-left-detail {
+	background-color: #2b3a40;
+    text-align: center;
+    padding: 30px;
+}
+
+.user-left-detail h2 {
+	color: #ffffff;
+}
+
+.user-left .list-group .list-group-item {
+	border-radius: 0px;
+}
+
+.user-left-detail img.avatar {
+	max-height: 150px;
+    max-width: 150px;
+    border-radius: 100%;
+    border: 2px solid #323333;
+}
+
+.user-right .user-table {
+	border-radius: 0px;
+}
+
+.user-right .user-table .user-info-heading h3 {
+	color: white;
+	margin: 0;
+}
+
+.user-right .user-table .user-info-body {
+	background: #ffffff;
+    border: 1px solid #dee5e7;
+    border-top: none;
+}
+
+.user-info-detail table {
+	width: 100%;
+}
+
+.user-info-detail table tr td {
+	height: 35px;
+}
+
+.user-info-detail table tr td:first-child {
+	font-weight: bold;
+	width: 30%;
+}
+
+.user-text {
+	border: 1px solid #2b3a40;
+}
+
+.wrapper-md h3 {
+	margin: 0;
+	color: #ffffff;
+}
+
+@media (max-width: 400px) {
+  	.user-left-detail img.avatar {
+		max-height: 50%;
+	    max-width: 50%;
+	}
+
+	.user-info-detail table tr td {
+		font-size: 11px;
+	}
+
+	.user-info-detail table tr td {
+		height: 25px;
+	}
+
+	.user-info-detail table tr td:first-child {
+		width: 40%;
+	}
+
+	.user-left-detail h2 {
+		font-size: 16px !important;
+	}
+}

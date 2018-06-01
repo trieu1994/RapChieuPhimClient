@@ -1,0 +1,46 @@
+<div class="container body">
+		
+  <div class="row row-sm">
+    <div class="col-md-8">
+              <div id="news" class="posts page-news">
+                  <div class="bg-black block-heading">
+                      <h2 class="m-n h4 text-white">Tin điện ảnh</h2>
+                  </div>
+
+                  <div class="row row-sm">
+ <div class="col-xs-12 col-sm-6" *ngFor="let anew of news">
+        
+<div class="content">
+        <div class="wrap">
+                <a href="#" [routerLink]="['/news',anew.id]"routerLinkActive="active" title="{{anew.title}}">
+                    <img src="http://apicine.herokuapp.com/public/{{anew.image}}" class="img-responsive" >
+                  </a>
+                <div class="post-info">
+                        <div class="post-basic-info">
+                            <h4 class="font-bold">
+                                <a href="" [routerLink]="['/news',anew.id]" routerLinkActive="active" title="">
+                                    {{anew.title}}
+                                </a>
+                            </h4>
+                                        <p class="post-excerpt">
+                                            {{anew.content}}
+                                        </p>
+                        </div>
+                 </div>
+        </div>
+    
+</div>
+    
+
+</div>
+                         
+                      
+              </div>    
+                          
+  </div>
+  </div>
+      <div class="col-md-3" style="margin-top : 10px;" >
+         <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoveek%2F&tabs=timeline&width=340&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=460321057641931" width="340" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+           <!--<div class="fb-comments" data-numposts="3"></div>-->
+      </div>
+</div>

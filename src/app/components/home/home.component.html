@@ -1,0 +1,128 @@
+<div class="row hbox">
+	
+	<div class="col-md-9 col-xs-12">
+		
+		<div class="feature-movie slider">
+			<ul>
+				<li>
+					<img src="assets/images/zootopia.jpg" />
+					<span>
+                        <h4>Zootopia</h4>
+                        <p>Lorem ipsum dolor...</p>
+                    </span>
+				</li>
+				<li>
+					<img src="assets/images/doctor-strange.jpg" />
+					<span>
+                        <h4>Doctor Strange</h4>
+                        <p>Lorem ipsum dolor...</p>
+                    </span>
+				</li>
+				<li>
+					<img src="assets/images/fantastic-beasts.jpg" />
+					<span>
+                        <h4>Fantastic Beasts And Where To Find Them</h4>
+                        <p>Lorem ipsum dolor...</p>
+                    </span>
+				</li>
+			</ul>
+		</div>
+        
+	<!-- showing -->
+  <div class="showing">
+    <div class="wrapper-md bg-black" style="margin-top: 20px;">
+				<h3 class="font-thin">
+					<a class="text-white" href="#">{{'HOME_NOWSHOWING' |translate}}</a>
+				</h3>
+				<form class="topmenusearch">
+							<input  type="text" id="textSearch" name="textSearch" [(ngModel)]="textSearch" (keyup)="onKey($event)"  placeholder="{{'HOME_SEARCH'|translate}}">
+							<button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
+			    </form>
+      </div>
+      <div class="wrapper-md border">
+          <div class="row">
+              <ng-template [ngIf]= "isfilteringMovie === true || textSearch.length <= 0 ">
+                  <div *ngFor="let movie of movies | paginate: {itemsPerPage: 4, currentPage:page} " class="col-lg-3 col-sm-4 col-xs-6">
+                      <div class="panel panel-default panel-movie no-border">
+                        <a [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">
+                          <div class="opacity">
+                            <h4>{{movie.titleEng}}</h4>
+                            <small>{{movie.titleViet}}</small>
+                            <small class="font-thin text-center sm-panel-text block">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>{{movie.deration}}
+                              <i class="fa fa-star" aria-hidden="true"></i> 8.27
+                            </small>
+                          </div>
+                          <img class="img-responsive" src="http://apicine.herokuapp.com/public//{{movie.image}}">
+                        </a>
+                        <div class="panel-body text-center">
+                          <div class="btn-group">
+                            <span class="btn btn-dark btn-xs">{{movie.pubDay|date:'dd/MM/yyyy'}}</span>
+                            <a class="btn btn-default btn-xs" href="#" [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">{{'HOME_MOVIEINFO'|translate}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </ng-template>
+              <ng-template [ngIf]="textSearch.length > 0 && isfilteringMovie === false">
+                  <div *ngFor="let movie of movies | paginate: {itemsPerPage: 4, currentPage:page} " class="col-lg-3 col-sm-4 col-xs-6">
+                    <div class="panel panel-default panel-movie no-border">
+                      <a [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">
+                        <div class="opacity">
+                          <h4>{{movie.titleEng}}</h4>
+                          <small>{{movie.titleViet}}</small>
+                          <small class="font-thin text-center sm-panel-text block">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>{{movie.deration}}
+                            <i class="fa fa-star" aria-hidden="true"></i> 8.27
+                          </small>
+                        </div>
+                        <img class="img-responsive" src="http://apicine.herokuapp.com/public/{{movie.image}}">
+                      </a>
+                      <div class="panel-body text-center">
+                        <div class="btn-group">
+                          <span class="btn btn-dark btn-xs">{{movie.pubDay|date:'dd/MM/yyyy'}}</span>
+                          <a class="btn btn-default btn-xs" href="#" [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">{{'HOME_MOVIEINFO'|translate}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   </ng-template>
+          </div>
+          <p class="text-center">
+              <pagination-controls style="font-size:14px;" (pageChange)="page = $event" #api> </pagination-controls>
+            </p>
+      </div>
+  </div>
+
+  <!-- news -->
+  <div class="news-features">
+			<div class="wrapper-sm bg-black">
+				<h4 class="font-thin"><a class="text-white" href="#" [routerLink]="['news']">{{'HOME_NEWSTITLE'|translate}} </a></h4>
+			</div>
+			<div class="wrapper-md border" *ngFor="let anew of news">
+				<div class="  post clearfix">
+					<h5 class="m-b-xs"><a href="#" >{{anew.title}} </a></h5>
+					<div class="post-body">
+						<a href="#" [routerLink]="['/news',anew.id]"><img class="post-thumbnail" src="http://apicine.herokuapp.com/public/{{anew.image}}"></a>
+						<p>{{anew.content}}<a class="btn btn-dark btn-xs" href="#" [routerLink]="['/news',anew.id]" routerLinkActive="active">Read More »</a></p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+  
+  
+	</div>
+
+	<div class="col-md-3 hidden-xs hidden-sm">
+
+		<div class="#">
+			<div class="#">			
+				<div class="#" style="margin-top : 10px;" >
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoveek%2F&tabs=timeline&width=340&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=460321057641931" width="340" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                    </div>				
+			</div>
+		</div>
+	</div>
+</div>

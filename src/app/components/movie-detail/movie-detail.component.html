@@ -1,0 +1,208 @@
+<div *ngIf="movie">
+		<div class="row hbox">
+			<div class="col-md-9 col-xs-12 border">
+				<div class="wrapper-md bg-light border-b clearfix">
+					<div class="row-sm clearfix">
+						<div class="col-sm-3 hidden-xs col">
+							<a href="#"><img class="radius-2x img-responsive" src="http://apicine.herokuapp.com/public/{{movie.image}}"></a>
+						</div>
+						<div class="col-sm-9 col">
+							<a href="#" class="visible-xs"><img class="radius-2x img-responsive m-r pull-left" src="http://apicine.herokuapp.com/public/{{movie.image}}" width="120"></a>
+							
+							<!--Rating Point-->
+							<a href="#" class="b-point bg-light text-center pull-right radius-2x" style="padding: 5px;">
+								<strong id="rating-point" *ngIf='movie_imdb' > {{movie_imdb.imdbRating}}</strong><br>
+								<small class="label bg-dark">
+									<span id="rating-votes" *ngIf='movie_imdb' >{{movie_imdb.imdbVotes}}</span> voted
+								</small>
+							</a><!--Rating Point-->
+							
+							<h3>
+								{{movie.titleEng}}
+								<span class="badge bg-dark"><span>{{movie.age}}</span> +</span>
+							</h3>
+							<p class="text-muted">
+								{{movie.titleViet}} <br>
+								<span><strong>{{'CINEMA_CATEGORY'|translate}}</strong> {{movie.cate}}</span><br>
+								<span><strong>{{'CINEMA_DATESHOW'|translate}}</strong> {{movie.pubDay}}</span><br>
+								<span *ngIf='movie_imdb' ><strong>{{'CINEMA_DIRECTOR'|translate}}</strong> {{movie_imdb.Director}}</span><br>
+								<span *ngIf='movie_imdb'><strong>{{'CINEMA_ACTOR'|translate}}</strong> {{movie_imdb.Actors}}</span><br>
+								<span *ngIf='movie_imdb'><strong>{{'CINEMA_LANGUAGE'|translate}}</strong> {{movie_imdb.Language}}</span><br>
+								<span><strong>{{'CINEMA_DURATION'|translate}}</strong>{{movie.duration}} {{'CINEMA_MINUTES'|translate}}</span><br>
+								<span *ngIf='movie_imdb'><strong >IMDB:</strong> {{movie_imdb.imdbRating}}</span><br>
+							</p>
+							<p>{{movie.description}}</p>
+							<div class="clearfix">
+								<div class="pull-left">
+									<a href="#" class="btn btn-sm btn-rounded btn-default" data-toggle="modal" data-target="#trailerModal">
+										<i class="fa fa-play" aria-hidden="true"></i> Trailer
+									</a>
+									<br>
+									<br>
+									<a  class="btn btn-sm btn-rounded btn-dark" >
+										<!--<i class="fa fa-star" aria-hidden="true"></i>-->
+										<span>
+											<div>
+												<puk-rating
+														[pukCount]="itemSvg.puk"
+														[pukModel]="itemSvg.selectedPuk"
+														
+														[pukIconBase]="'fa'"
+														[pukEmptyIcon]="'fa-star-o'"
+														[pukFullIcon]="'fa-star'"
+														[pukIconColor]="'#fff'"
+														[pukIconSize]="'15px'"
+														(pukClick)="pukChangeSvg($event)">
+												</puk-rating>
+												<br>
+											</div>
+										</span>
+									</a>
+									<h6><p class="text">{{itemSvg.selectedPuk}} Stars. Thanks for the rating</p></h6>
+	
+									<!--Trailer Modal-->
+									<div class="modal fade" id="trailerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-body">
+													<div class="js-video youtube widescreen">
+														<!--<iframe width="644" height="394" [src]="https://www.youtube.com/embed/dDWln9u14c0" frameborder="0" allowfullscreen></iframe>-->
+														<video  width="644" height="394" controls >
+															<source src="{{movie.trailer}}" type="video/ogg" />
+															<source src="{{movie.trailer}}" type="video/mp4" />									
+														</video>
+													
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<!--Rate Model-->
+									<div class="modal fade" id="rateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-body">
+													<div class="rating">
+														<h2>Rating for <strong>{{movie.titleEng}}</strong> movie</h2>
+														<div class="panel">
+															<puk-rating	
+																	[pukCount]="itemSvg.puk"
+																	[pukModel]="itemSvg.selectedPuk"
+																	[pukIconBase]="'fa'"
+																	[pukEmptyIcon]="'fa-star-o'"
+																	[pukFullIcon]="'fa-star'"
+																	[pukIconColor]="'#2f3342'"
+																	[pukIconSize]="'30px'"
+																	(pukClick)="pukChangeSvg($event)">
+															</puk-rating>
+															<br><br>
+															<h4><p class="text">{{itemSvg.selectedPuk}} Stars. Thanks for the rating</p>
+															</h4>
+														</div>
+													</div>
+												</div>
+												<div class="modal-footer">
+																<button (click)="closeRating()" type="button" class="btn btn-default">Close</button>
+																<button (click)="sendRating()" type="button" class="btn btn-warning">Send</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="wrapper border-b bg-white">
+					<h4 style="margin: 0px;">Showtime</h4>
+				</div>
+	
+				<div class="padder" style="margin-top: 15px;">
+					<div class="row-sm clearfix">
+						<div class="col-md-12 col">
+							<div id="showtime">								
+								<div class="showtime-wrapper">
+									<div class="row clearfix">
+										<div class="col-sm-2 col">
+											<div class="showtime-dates row-sm clearfix">
+												<div class="col-sm-10 col-xs-3 col" *ngFor="let date of schedule_Days">
+													<a [routerLink]="['/movies',date.movie_id, date.dateShow]" class="panel date padder-y text-center bg-default"
+														ng-click='selected($event)' [routerLinkActive]="['bg-danger']">
+														<h3 class="font-thin">{{date.dateShow.split('-')[2]}}</h3>
+														<span class="text-xs">{{date.dateShow|date:'MMMM'}}</span>
+													</a>
+												</div>
+											
+											</div>
+										</div>
+	
+										<div class="col-sm-10 col">
+											<div class="showtimes" >
+												<div class="panel panel-default" *ngFor = "let schedule of schedule_day">
+													<div class="panel-heading">
+														<div class="pull-right">
+															<a href="#" class="btn btn-sm btn-rounded btn-icon btn-default" title="Map">
+																<i class="fa fa-map-marker" aria-hidden="true"></i>
+															</a>
+															<a href="#" class="btn btn-sm btn-rounded btn-dark" data-toggle="modal" data-target="#ticketModal" title="Price">Price</a>
+														</div>
+														<h3 class="font-thin"><a href="#">{{schedule.cinema}}</a></h3>
+														<small class="text-muted">{{schedule.address}}</small>
+													</div>
+													<div class="modal fade" id="ticketModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										<div class="modal-dialog modal-lg" role="dialog" style="display: block;">
+											<div class="modal-content">
+												<div class="modal-body">
+													
+														<img class="img-responsive" src="{{schedule.price}}">
+													
+												</div>
+											</div>
+										</div>
+										
+						</div>
+	
+													<div class="panel-body" >
+														<div class="showtime-in-day"  >
+															
+															<p >
+																	<!--<a href="#"  *ngFor= "let item of Time"  class="label text-base bg-light" data-toggle="modal" data-target="#book1" >
+																	{{item}}</a>-->
+																<a href="#" class="label text-base bg-light">
+																	{{schedule.listTime.split(',')[0]}}</a>
+																<a href="#" class="label text-base bg-light" data-toggle="modal" data-target="#book1" >{{schedule.listTime.split(',')[1]}}</a>
+																
+															
+																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[2]}}</a>
+																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[3]}}</a>
+																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[4]}}</a>
+																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[5]}}</a>
+	
+																	</p>																													
+														</div>
+													</div>	
+												</div>													
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<!--Comment Facebook-->
+			<div class="col-md-3  ">
+				<iframe id="f8681c2a58daf8" name="f9d6b9f6637a0c" scrolling="no" style="border: medium none; overflow: hidden; height: 750px; width: 280px;" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=196731574429025&amp;channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F87XNE1PC38r.js%3Fversion%3D42%23cb%3Dfea26d7ba2398e%26domain%3Dlocalhost%26origin%3Dhttp%253A%252F%252Flocalhost%253A3000%252Ff34f5a9db2e29f%26relation%3Dparent.parent&amp;href=http://localhost:4200/movies/2/2018-04-23&amp;locale=vi_VN&amp;numposts=3&amp;sdk=joey&amp;version=v2.9&amp;width=200"></iframe>
+				<!-- <iframe id="f8681c2a58daf8" name="f9d6b9f6637a0c" scrolling="no" style="border: medium none; overflow: hidden; height: 750px; width: 280px;" title="Facebook Social Plugin" class="fb_ltr" [src]='sanitizer.bypassSecurityTrustResourceUrl(current_url)'></iframe> -->
+			</div>
+	</div>
+	
+	<div *ngIf="movie === false" class="not-found">
+		<h3>PAGE NOT FOUND</h3>
+		<p>the page you requested does not exist</p>
+	</div>

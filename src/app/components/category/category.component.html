@@ -1,0 +1,56 @@
+<div class="row hbox">
+	<div class="col-md-9 col-xs-12">
+		
+
+		<div class="showing" >
+			<div class="wrapper-md bg-black" style="margin-top: 20px;" *ngIf="cate">
+				<h3 class="font-thin">
+					<a class="text-white" href="#">{{cate.name}}</a>
+				</h3>
+			</div>
+			<div class="wrapper-md border">
+				<div class="row">
+					<div *ngFor="let movie of movies" class="col-lg-3 col-sm-4 col-xs-6">
+						<div class="panel panel-default panel-movie no-border">
+							<a [routerLink]="['/movies',movie.id, movie.pubDay]" routerLinkActive="active">
+								<div class="opacity">
+									<h4>{{movie.titleEng}}</h4>
+									<small>{{movie.titleViet}}</small>
+									<small class="font-thin text-center sm-panel-text block">
+										<i class="fa fa-clock-o" aria-hidden="true"></i> {{movie.duration}}
+										<i class="fa fa-star" aria-hidden="true"></i> {{movie.IMDB}}
+									</small>
+								</div>
+								<img class="img-responsive" src="http://apicine.herokuapp.com/public//{{movie.image}}">
+							</a>
+							<div class="panel-body text-center">
+								<div class="btn-group">
+									<span class="btn btn-dark btn-xs">{{movie.pubDay|date:'dd/MM/yyyy'}}</span>
+									<a class="btn btn-default btn-xs" href="#">{{movie.cate}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<p class="text-center">
+					<a href="#" class="more">More <i class="fa fa-angle-down"></i></a>
+				</p>
+			</div>
+		</div>
+
+		
+
+	</div>
+
+	<div class="col-md-3 hidden-xs hidden-sm">
+
+		<div class="#">
+			<div class="#">			
+				<div class="#" style="margin-top : 10px;" >
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoveek%2F&tabs=timeline&width=340&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=460321057641931" width="340" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                    </div>				
+			</div>
+		</div>
+	</div>
+</div>

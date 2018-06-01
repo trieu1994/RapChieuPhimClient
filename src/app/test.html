@@ -1,0 +1,22 @@
+<form [noValidate]= false name="formSignUp" class="form-signin" (submit)="signUp()" >
+        <div class="form-group">
+              <input type="email" class="form-control" id="inputYourEmail" required placeholder="{{'MODAL_EMAIL'|translate}}" [(ngModel)]="email" name="email">
+        </div>
+        <div class="form-group">
+              <input type="text" class="form-control" id="inputYourName" required placeholder="{{'MODAL_FULLNAME'|translate}}" [(ngModel)] = "name" name="name">
+        </div>
+        <div class="form-group">
+              <input type="text" class="form-control" id="inputYourAddress"   placeholder="{{'MODAL_ADDRESS'|translate}}" [(ngModel)] = "address"  name="address">
+        </div>
+        <div class="form-group">
+              <input type="text" class="form-control" id="inputPhone" required placeholder="{{'MODAL_PHONE'|translate}}" [(ngModel)] = "phone" name="phone">
+          </div>
+          <div class="form-group">
+              <input type="password" class="form-control" id="inputYourPassword" placeholder="{{'MODAL_PASSWORD'|translate}}"  [(ngModel)] = "password" name="yourPassword" #yourPassword="ngModel" [min]="5" required/>                     
+        </div>
+          <div class="form-group">
+              <div clas="col-sm-offset-2 col-sm-10">
+                <button type="submit"  id="sign-up" class="btn btn-lg btn-primary btn-block btn-warning">{{'MODAL_SIGNUP'|translate}}</button>
+            </div>
+         </div>
+</form>
