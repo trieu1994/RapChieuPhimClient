@@ -5,7 +5,7 @@ import { Cate } from '../models/cate';
 
 @Injectable()
 export class CategoryService {
-  private cateAPI = 'http://apicine.herokuapp.com/public/api/categories';
+  private cateAPI = 'https://apicine.herokuapp.com/public/api/categories';
   constructor(private http: Http) { }
 
   getCates(): Observable< Cate[] > {
