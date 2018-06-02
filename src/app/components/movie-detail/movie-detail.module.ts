@@ -7,6 +7,8 @@ import { MovieDetailComponent } from './movie-detail.component';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { HttpClient , HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,6 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     CommonModule,
     MovieDetailRoutingModule,
+    FormsModule,
     FacebookModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

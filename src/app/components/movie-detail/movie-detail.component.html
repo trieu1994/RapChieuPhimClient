@@ -168,22 +168,145 @@
 													<div class="panel-body" >
 														<div class="showtime-in-day"  >
 															
-															<p >
+															
 																	<!--<a href="#"  *ngFor= "let item of Time"  class="label text-base bg-light" data-toggle="modal" data-target="#book1" >
 																	{{item}}</a>-->
-																<a href="#" class="label text-base bg-light">
-																	{{schedule.listTime.split(',')[0]}}</a>
-																<a href="#" class="label text-base bg-light" data-toggle="modal" data-target="#book1" >{{schedule.listTime.split(',')[1]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[0])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[0]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[1])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[1]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[2])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[2]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[3])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[3]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[4])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[4]}}</a>
+																<a (click)="onSelect1(schedule,schedule.listTime.split(',')[5])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[5]}}</a>
+
 																
-															
-																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[2]}}</a>
-																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[3]}}</a>
-																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[4]}}</a>
-																<a href="#" class="label text-base bg-light">{{schedule.listTime.split(',')[5]}}</a>
-	
-																	</p>																													
+																<div class="modal fade"   id="book1" tabindex="-1" role="dialog" aria-labelledby="loginLabel">
+																	<div class="modal-dialog"  role="document">
+																		<div class="modal-content login" style="margin: -20px">
+																			<div class="modal-header login__header flex-box">
+																				<h2 class="login__title">{{'SCHEDULE_BOOKING'|translate}}</h2>
+																				<button type="button" class="close login__close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			</div>
+																			<div class="modal-body login__body">
+			
+																				<form [noValidate]= false class="form-horizontal" #f="ngForm" style="margin-right: 30px" (submit)="Booking()">
+																					<div class="form-group">
+																							<div class="row">
+																									<label for="FullName"  class="col-sm-4 control-label">{{'SCHEDULE_FULLNAME'|translate}}</label>
+																									<div class="col-sm-8">
+																										<input type="text" required [(ngModel)]="fullname" class="form-control" id="inputFullname" value="" placeholder="" name="name">
+																									</div>
+																							</div>                                                      
+																					</div>
+		
+																					<div class="form-group">
+																						<div class="row">
+																								<label for="Email"  class="col-sm-4 control-label">{{'SCHEDULE_EMAIL'|translate}}</label>
+																								<div class="col-sm-8">
+																									<input type="email" required [(ngModel)]="email" class="form-control" id="inputEmail" value="" placeholder="" name="email">
+																								</div>
+																						</div>                                                      
+																					</div>
+																				   
+																					<div class="form-group">
+																						<div class="row">
+																								<label for="Address"   class="col-sm-4 control-label">{{'SCHEDULE_ADDRESS'|translate}}</label>
+																								<div class="col-sm-8">
+																									<input type="text" required [(ngModel)]="address"  class="form-control" id="inputAddress" value="" placeholder="" name="diachi">
+																								</div>
+																						</div>                            
+																					</div>
+		
+		
+																					<div class="form-group">
+																							<div class="row">
+																									<label for="Phone"  class="col-sm-4 control-label">{{'SCHEDULE_PHONE'|translate}}</label>
+																									<div class="col-sm-8">
+																										<input type="text" required [(ngModel)]="phone" class="form-control" id="inputPhone" value="" placeholder="" name="phone">
+																									</div>
+																							</div>                                    
+																					</div>
+																					
+																					 <div class="form-group">
+																						 <div class="row">
+																								<label for="Dateshow" class="col-sm-4 control-label">{{'SCHEDULE_SHOW'|translate}}</label>
+																								<div class="col-sm-8">
+																									<input type="text" required [(ngModel)]="dateTime" class="form-control" id="inputDateshow" disabled 
+																										name="date">
+																								</div>
+																						 </div>
+																					   
+																					</div>
+																					<div class="form-group">
+																						<div class="row">
+																					
+																						<label for="MovieName" class="col-sm-4 control-label">{{'SCHEDULE_MOVIENAME'|translate}}</label>
+																						<div class="col-sm-8">
+																							<input type="text" required [(ngModel)]="movie_name"  class="form-control" id="inputMovieName" disabled  placeholder="Tên phim" name="movie">
+																						</div>
+																					</div>
+																					</div>
+		
+		
+																					<div class="form-group">
+																							<div class="row">
+																						<label for="Cinema" class="col-sm-4 control-label">{{'SCHEDULE_CINEMA'|translate}}</label>
+																						<div class="col-sm-8">
+																							<input type="text" required  [(ngModel)]="cinema_name"  class="form-control" id="inputCinema" disabled  placeholder="Rạp" name="rap">
+																						</div>
+																					</div>
+																					</div>
+		
+		
+																					<div class="form-group">
+																						<div class="row">
+																						<label for="Price" class="col-sm-4 control-label">{{'SCHEDULE_PRICE'|translate}}</label>
+																						<div class="col-sm-8">
+																							<input type="text" required class="form-control" id="inputPrice" [(ngModel)]="price" disabled name="giave">
+																						</div>
+																					</div>
+																					</div>
+		
+		
+																					<div class="form-group">
+																						<div class="row">
+																						<label for="Soluong" class="col-sm-4 control-label">{{'SCHEDULE_AMOUNT'|translate}}</label>
+																						<div class="col-sm-8">
+																							<input type="text" (keyup)="onKey($event)" required [(ngModel)]="num" class="form-control" id="inputSoluong" value="" placeholder="Số lượng"
+																								name="soluong">
+																						</div>
+																					</div>
+																					</div>
+		
+		
+																					<div class="form-group">
+																						<div class="row">
+																						<label for="Total" class="col-sm-4 control-label">{{'SCHEDULE_TOTAL'|translate}}</label>
+																						<div class="col-sm-8">
+																							<input type="text" [(ngModel)]="total" class="form-control" id="inputTotal" disabled value="" placeholder="Tính tiền" name="tien">
+																						</div>
+																					</div>
+																					</div>
+			
+			
+			
+																					<div class="form-group">
+																						<div class="col-sm-offset-2 col-sm-10">
+																							<button type="submit" id="sign-in" class="btn btn-default">Thanh Toán</button>
+																							<button  type="button"  (click)="closeSignUp()" id="sign-in_submit" class="btn btn-default">Cancel</button>
+																						</div>
+																					</div>
+																					
+																				</form>
+			
+																			</div>
+			
+																		</div>
+																	</div>
+																</div>
+																
 														</div>
-													</div>	
+													</div>
+														
 												</div>													
 											</div>
 										</div>

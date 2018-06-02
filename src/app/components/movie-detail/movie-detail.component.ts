@@ -14,6 +14,7 @@ import { ViewEncapsulation } from '@angular/core';
 import '../../../assets/js/fbplugin.js';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { Booking } from './../../models/booking';
 
 declare var $: any;
 
@@ -35,11 +36,25 @@ export class MovieDetailComponent implements OnInit {
   movie: Movie;
   movie_imdb: Movie;
   itemSelectPuk: number;
+
+  num: number;
+  total: number;
+  price: number;
+  dateTime: string;
+  cinema_name: string;
+  movie_name: string;
+  fullname: string;
+  address: string;
+  phone: string;
+  phone_number: string;
+  email: string;
+  token: string;
+
   // tslint:disable-next-line:max-line-length
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private scheduleService: ScheduleService, private ratingService: RatingService, private dateshowService: DateshowService, private router: Router, public sanitizer: DomSanitizer, private translateService: TranslateService) { 
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private scheduleService: ScheduleService, private ratingService: RatingService, private dateshowService: DateshowService, private router: Router, public sanitizer: DomSanitizer, private translateService: TranslateService) {
     this.translate = translateService;
     translateService.setDefaultLang('vi');
-    translateService.use('vi');  
+    translateService.use('vi');
 }
 
   public itemImage: any =
@@ -137,5 +152,68 @@ export class MovieDetailComponent implements OnInit {
           console.log(err);
         });
     $('#rateModal').modal('hide');
+  }
+
+  onSelect1(schedule: any, time: any) {
+    this.price = schedule.price;
+     this.dateTime = time + ' ' + schedule.dateShow;
+     if (schedule.cinema_id === 1) {
+       this.price = 50000;
+
+     } else if (schedule.cinema_id === 2) {
+       this.price = 60000;
+
+     } else if (schedule.cinema_id === 3) {
+       this.price = 70000;
+
+     } else if (schedule.cinema_id === 4) {
+       this.price = 100000;
+
+     }
+
+     this.cinema_name = schedule.cinema;
+     this.movie_name = schedule.titleEng;
+      this.token = localStorage.getItem('token');
+     if (localStorage.getItem('token') !== null) {
+        this.fullname = localStorage.getItem('currentName').split('"')[1];
+        this.address = localStorage.getItem('currentAddress').split('"')[1];
+        this.phone = localStorage.getItem('currentPhone').split('"')[1];
+        this.email = localStorage.getItem('currentEmail').split('"')[1];
+    }
+    }
+
+
+    onKey(event: any) {
+      this.total = Math.round(this.num * this.price);
+    }
+
+    Booking() {
+      const booking = new Booking();
+      booking.address = this.address;
+      booking.fullname = this.fullname;
+      booking.num = this.num;
+      booking.total = this.total;
+      booking.datetime = this.dateTime ;
+      booking.movie_name = this.movie_name;
+      booking.cinema_name = this.cinema_name;
+      booking.phone = this.phone;
+      booking.email = this.email;
+
+     this.ratingService.booking(booking);
+     alert('Đặt vé thành công');
+      $('#book1').modal('hide');
+      this.num = 0;
+      this.total = 0;
+   }
+
+   closeSignUp() {
+    $('#book1').modal('hide');
+    this.dateTime = '';
+    this.movie_name = '';
+    this.cinema_name = '';
+    this.price = 0;
+    this.total = 0;
+    this.fullname = '';
+    this.num = 0;
   }
 }
