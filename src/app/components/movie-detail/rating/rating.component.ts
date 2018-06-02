@@ -14,7 +14,7 @@ export class RatingComponent {
   private el: HTMLElement;
   // tslint:disable-next-line:no-inferrable-types
   private defaultCount: number = 1;
-  private pukList: number[] = [];
+  public pukList: number[] = [];
   private pukHoverIndex: number;
 
   @Input() pukCount: number;
