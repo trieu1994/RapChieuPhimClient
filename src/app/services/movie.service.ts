@@ -41,7 +41,7 @@ export class MovieService {
  }
 
   getIMDB(title: string): Observable<Movie> {
-    return this.http.get('http://www.omdbapi.com/?t=' + title + '&plot=short&r=json' + '&apikey=b6ab99d7')
+    return this.http.get('https://www.omdbapi.com/?t=' + title + '&plot=short&r=json' + '&apikey=b6ab99d7')
             .map(res => res.json())
             .catch(this.handleError);
 }
