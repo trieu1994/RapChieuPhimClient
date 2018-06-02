@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   currentMovie = [];
   news: New[];
   anew: New;
+  page = 1;
+
   // tslint:disable-next-line:max-line-length
   constructor(private movieService: MovieService, private router: Router , private newsService: NewsService, private translateService: TranslateService) {
     this.translate = translateService;
