@@ -5,8 +5,8 @@ import { Booking } from '../models/booking';
 
 @Injectable()
 export class RatingService {
-  private bookingAPI = 'http://apicine.herokuapp.com/public/api/booking';
-  private moviesApiUrl = 'http://apicine.herokuapp.com/public/api/movies/';
+  private bookingAPI = 'https://apicine.herokuapp.com/public/api/booking';
+  private moviesApiUrl = 'https://apicine.herokuapp.com/public/api/movies/';
   constructor(private http: Http) { }
   updateRate(idMovie: number, rating: number): Observable<Response> {
     const headers = new Headers();

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ScheduleService {
-  private scheduleApiUrl = 'http://apicine.herokuapp.com/public/api/schedule';
+  private scheduleApiUrl = 'https://apicine.herokuapp.com/public/api/schedule';
   schedule: Schedule_Movie[];
   constructor(private http: Http) { }
 

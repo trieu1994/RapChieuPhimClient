@@ -7,8 +7,8 @@ import { MovieAll, Movie } from '../models/movie';
 
 @Injectable()
 export class MovieService {
-  private moviesAllUrl = 'http://apicine.herokuapp.com/public/api/allmovies';
-  private moviesApiUrl = 'http://apicine.herokuapp.com/public/api/movies';
+  private moviesAllUrl = 'https://apicine.herokuapp.com/public/api/allmovies';
+  private moviesApiUrl = 'https://apicine.herokuapp.com/public/api/movies';
 
   getAllMovies(): Observable<MovieAll[]> {
     return this.http.get(this.moviesAllUrl)

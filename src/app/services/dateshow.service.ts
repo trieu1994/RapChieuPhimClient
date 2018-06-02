@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DateshowService {
-  private dateAPI = 'http://apicine.herokuapp.com/public/api/scheduleDateshow';
+  private dateAPI = 'https://apicine.herokuapp.com/public/api/scheduleDateshow';
   constructor(private http: Http) { }
   getDateShow(): Observable< Dateshow[] > {
         return this.http.get(this.dateAPI)

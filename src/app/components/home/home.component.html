@@ -53,7 +53,7 @@
                               <i class="fa fa-star" aria-hidden="true"></i> 8.27
                             </small>
                           </div>
-                          <img class="img-responsive" src="http://apicine.herokuapp.com/public//{{movie.image}}">
+                          <img class="img-responsive" src="https://apicine.herokuapp.com/public//{{movie.image}}">
                         </a>
                         <div class="panel-body text-center">
                           <div class="btn-group">
@@ -89,7 +89,7 @@
                    </ng-template>
           </div>
           <p class="text-center">
-              <pagination-controls style="font-size:14px;"  #api> </pagination-controls>
+              <pagination-controls style="font-size:14px;" (pageChange)="page = $event" #api> </pagination-controls>
             </p>
       </div>
   </div>
@@ -103,7 +103,7 @@
 				<div class="  post clearfix">
 					<h5 class="m-b-xs"><a href="#" >{{anew.title}} </a></h5>
 					<div class="post-body">
-						<a href="#" [routerLink]="['/news',anew.id]"><img class="post-thumbnail" src="http://apicine.herokuapp.com/public/{{anew.image}}"></a>
+						<a href="#" [routerLink]="['/news',anew.id]"><img class="post-thumbnail" src="https://apicine.herokuapp.com/public/{{anew.image}}"></a>
 						<p>{{anew.content}}<a class="btn btn-dark btn-xs" href="#" [routerLink]="['/news',anew.id]" routerLinkActive="active">Read More »</a></p>
 					</div>
 				</div>

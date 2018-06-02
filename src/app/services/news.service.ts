@@ -5,7 +5,7 @@ import { New } from '../models/new';
 
 @Injectable()
 export class NewsService {
-  private newsAPI = 'http://apicine.herokuapp.com/public/api/news';
+  private newsAPI = 'https://apicine.herokuapp.com/public/api/news';
 
   constructor(private http: Http) { }
 
