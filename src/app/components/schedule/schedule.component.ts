@@ -1,3 +1,4 @@
+import { Cinema } from './../../models/cinema';
 import { TranslateService } from '@ngx-translate/core';
 import { Booking } from './../../models/booking';
 import { MovieService } from './../../services/movie.service';
@@ -8,7 +9,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { Schedule_Movie } from '../../models/schedule';
-import { Cinema } from '../../models/cinema';
 
 declare var $: any;
 
@@ -80,8 +80,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   onSelect($event: any) {
-    console.log('all food size 1 ' + this.schedules.length);
-    console.log('on key @@@@ ', this.selected);
 
     const sizeCurrentMovie = this.currentMovie.length;
 
@@ -89,7 +87,6 @@ export class ScheduleComponent implements OnInit {
 
       // pop all food in food
       let sizeAllSchedule = this.schedules.length;
-      console.log('current Movie ', this.schedules);
 
       while (sizeAllSchedule > 0) {
         this.schedules.splice(0, 1);
@@ -125,7 +122,6 @@ export class ScheduleComponent implements OnInit {
       }
     }
 
-    console.log('all food sizecine ' + this.schedules.length);
   }
 
 

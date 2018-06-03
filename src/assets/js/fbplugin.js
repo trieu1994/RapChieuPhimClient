@@ -39,7 +39,7 @@
 //    }(document, 'script', 'facebook-jssdk'));
 window.fbAsyncInit = function () {
         FB.init({
-            appId: '196731574429025',
+            appId: '1650438311721724',
             cookie: true,
             xfbml: true,
             version: 'v3.0',
