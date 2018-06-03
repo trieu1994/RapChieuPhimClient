@@ -157,10 +157,10 @@ export class AppComponent implements OnInit {
     objUser.password = this.password;
     objUser.email = this.email;
     this.userService.signUp(objUser)
-    .subscribe(res => {console.log('new account ', res);
-    this.token = res;
-    localStorage.setItem('token', this.token);
-    this.fullname = this.name;
+    .subscribe(res => {alert('Đăng ký thành công');
+    // this.token = res;
+    // localStorage.setItem('token', this.token);
+    // this.fullname = this.name;
     $('#signup').modal('hide');
     this.name = '';
     this.password = '';
