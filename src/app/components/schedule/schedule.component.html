@@ -98,43 +98,12 @@
                                                         
                                                         <h5 rel="tooltip"><span class="version-2d">{{schedule.dateShow|date:"dd/MM/yyyy"}}</span></h5>
                                                         
-                                                      <!--<div *ngFor= 'let items of allTime'>
-                                                        <a *ngFor= 'let item of items' (click)="onSelect1(schedule,item)"
-                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
-                                                                data-target="#book1"> {{item}}
-                                                              
-    
-                                                                </a>
-                                                            </div>    -->
-                                                            <a (click)="onSelect1(schedule,schedule.listTime.split(',')[0])" 
-                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
-                                                                data-target="#book1">{{schedule.listTime.split(',')[0]}}
-                                                              
-    
-                                                                </a>
-                                                                
-                                                               
-                                                               <a (click)="onSelect1(schedule,schedule.listTime.split(',')[1])" 
-                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
-                                                                data-target="#book1">{{schedule.listTime.split(',')[1]}}
-                                                                 
-    
-                                                                </a>
-                                                              
-                                                             
-                                                                <a (click)="onSelect1(schedule,schedule.listTime.split(',')[2])" 
-                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
-                                                                data-target="#book1">{{schedule.listTime.split(',')[2]}}
-                                                                 
-    
-                                                                </a>
-                                                             
-                                                                <a (click)="onSelect1(schedule)" 
-                                                            href="#" class="label text-base bg-light" data-toggle="modal" 
-                                                                data-target="#book1">{{schedule.listTime.split(',')[3]}}
-                                                                 
-    
-                                                                </a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[0])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[0]}}</a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[1])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[1]}}</a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[2])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[2]}}</a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[3])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[3]}}</a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[4])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[4]}}</a>
+                                                        <a (click)="onSelect1(schedule,schedule.listTime.split(',')[5])"  href="#" data-toggle="modal" data-target="#book1" class="label text-base bg-light">{{schedule.listTime.split(',')[5]}}</a>
     
     
                                                       
