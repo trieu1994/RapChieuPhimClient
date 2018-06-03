@@ -43,6 +43,8 @@ export class ScheduleComponent implements OnInit {
   token: string;
   allTime = [];
   translate: TranslateService;
+  selectedMovie: string;
+  selectedCinema: string;
 
   // tslint:disable-next-line:max-line-length
   constructor(private router: Router, private scheduleService: ScheduleService, private cinemaService: CinemaService, private ratingService: RatingService, private movieService: MovieService, private translateService: TranslateService) {
@@ -63,6 +65,8 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.selected = '';
+    this.selectedCinema = '';
+    this.selectedMovie = '';
     this.getMovieSchedule();
 
     this.getMovies();
@@ -103,9 +107,10 @@ export class ScheduleComponent implements OnInit {
 
 
     const indexArr = [];
-
+// || !value.titleEng.includes('Avengers- Infinity War')
     this.currentMovie.forEach(function (value, index) {
-      if (!value.cinema.includes(this.selected)) {
+      console.log('name' + this.selectedMovie);
+      if (!value.cinema.includes(this.selectedCinema) || !value.titleEng.includes(this.selectedMovie)) {
         indexArr.push(index);
       }
     }, this);
@@ -154,7 +159,7 @@ onSelect2($event: any) {
     const indexArr = [];
 
     this.currentMovie.forEach(function (value, index) {
-      if (!value.titleEng.includes(this.selected)) {
+      if (!value.titleEng.includes(this.selectedMovie) || !value.titleEng.includes(this.selectedCinema)) {
         indexArr.push(index);
       }
     }, this);

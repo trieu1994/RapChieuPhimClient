@@ -17,7 +17,7 @@
                             <form method="post" action="/showtime" id="showtime-search-form">
                                 <div class="form-group">
                                     <label>{{'SCHEDULE_CHOOSEMOVIE'|translate}}</label>
-                                     <select name="movie_id"  [(ngModel)]="selected" class="form-control btn-cinema-select" (change)="onSelect2($event)">
+                                     <select name="movie_id"  [(ngModel)]="selectedMovie" class="form-control btn-cinema-select" (change)="onSelect2($event)">
                                  
                                 <option *ngFor='let movie of movies'  value="{{movie.titleEng}}" selected="selected">{{movie.titleEng}}</option>
                                                                                            
@@ -27,7 +27,7 @@
     
                                 <div class="form-group">
                                     <label>{{'SCHEDULE_CINEMA'|translate}}</label>
-                                    <select  name="cinema_id" [(ngModel)]="selected" class="form-control btn-cinema-select" (change)="onSelect($event)">
+                                    <select  name="cinema_id" [(ngModel)]="selectedCinema" class="form-control btn-cinema-select" (change)="onSelect($event)">
                                  <!--<option value="13786" data-subtext="" selected="selected">Chọn rạp</option>-->
                                 <option  *ngFor='let ci of cinema' value="{{ci.name}}" selected="selected">{{ci.name}}</option>
                                                                                            
